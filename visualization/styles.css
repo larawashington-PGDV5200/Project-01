@@ -12,8 +12,7 @@ body {
 }
 
 section {
-  width: 80%;
-  max-width: 600px;
+  width: 95%;
   margin: 0 auto;
   padding: 50px 12px;
   border-top: 3px #111 solid;
