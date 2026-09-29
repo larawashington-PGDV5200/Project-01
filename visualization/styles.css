@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #e5e5e5;
+  color: #111;
+  padding: 24px 40px;
+}
+
+section {
+  width: 80%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 50px 12px;
+  border-top: 3px #111 solid;
+}
+
+section:last-of-type {
+  border-bottom: 3px #111 solid;
+}
+
+.svg-plot {
+  display: block;
+  width: 100%;
+  margin: 20px 0 0;
+}
