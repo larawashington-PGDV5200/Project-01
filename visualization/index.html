@@ -1,15 +1,30 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <title>Project 1 M3 - Visualization</title>
-    <link rel="stylesheet" href="styles.css" />
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script src="main.js" defer></script>
-  </head>
-  <body>
-    <section>
-      <h1>Taxonomic Classification of Smithsonian's Orchid Collection</h1>
-      <svg class="svg-plot" id="icicle"></svg>
-    </section>
-  </body>
+
+<head>
+  <title>Smithsonian Orchid Visualization</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="main.js" defer></script>
+</head>
+
+<body>
+  <section>
+    <h1>Taxonomic Classification of Smithsonian's Orchid Collection</h1>
+    <div class="viz-row">
+      <svg id="rank-labels"></svg>
+      <div id="viz">
+        <canvas id="lines"></canvas>
+        <svg id="overlay"></svg>
+        <svg id="inset"></svg>
+      </div>
+    </div>
+    <!-- <svg class="svg-plot" id="icicle"></svg> -->
+  </section>
+  <div class="tooltip"></div>
+</body>
+
 </html>

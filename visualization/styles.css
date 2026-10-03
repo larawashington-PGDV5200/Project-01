@@ -1,3 +1,23 @@
+:root {
+  --paper: #e8e2c8;
+  --paper-edge: #d4ccaa;
+  --ink: #5b4a36;
+  --pencil: #8f8b7a;
+  --stem: #b3b585;
+  --node: #9a6a45;
+  --sub-epidendroideae: #a4557a;
+  --sub-orchidoideae: #6f5a8c;
+  --sub-cypripedioideae: #c9a03a;
+  --sub-vanilloideae: #4f5e25;
+  --sub-apostasioideae: #9fae86;
+  --sub-unknown: #8f8b7a;
+  --line-opa: 0.85;
+  --uncertain-opa: 0.4;
+  --dimmed-opa: 0.15;
+  --divider-thickness: 1px;
+  --context-row-height: 14px;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -5,25 +25,57 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background-color: #e5e5e5;
-  color: #111;
+  font-family: "EB Garamond", serif;
+  background: radial-gradient(var(--paper) 60%, var(--paper-edge));
+  color: var(--ink);
   padding: 24px 40px;
+  min-height: 100vh;
 }
 
 section {
   width: 95%;
   margin: 0 auto;
   padding: 50px 12px;
-  border-top: 3px #111 solid;
+  border-top: 1px solid var(--paper-edge);
 }
 
-section:last-of-type {
-  border-bottom: 3px #111 solid;
+h1 {
+  font-weight: normal;
 }
 
-.svg-plot {
-  display: block;
-  width: 100%;
-  margin: 20px 0 0;
+.viz-row {
+  display: flex;
 }
+
+#rank-labels {
+  width: 90px;
+}
+
+#viz {
+  flex: 1;
+  height: calc(100vh - 240px);
+  position: relative;
+}
+
+#lines, #overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; 
+  height: 100%;
+}
+
+#inset {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 160px;
+  height: 60px;
+}
+
+/* TEMP OUTLINES */
+#lines {outline: 2px solid blue;}
+#overlay {outline: 2px solid red;}
+#inset {outline: 2px solid green;}
+#rank-labels {outline: 2px solid purple;}
+
