@@ -1,5 +1,5 @@
-const width = 1200;
-const height = 600;
+let width = window.innerWidth;
+let height = window.innerHeight;
 const colour = d3.scaleOrdinal(d3.schemeTableau10);
 
 d3.json("../data/orchid.json")
@@ -9,6 +9,7 @@ d3.json("../data/orchid.json")
     const cdata = data.map(cleanRecord);
     //console.log(cdata[0]);
     //console.log(cdata.filter(d => d.genus === "Unknown").length);
+    //console.log("subfamilies:", new Set(cdata.map(d => d.subfamily)).size, "genera:", new Set(cdata.map(d => d.genus)).size);
     const nested = d3.rollup(cdata, v => v.length, d => d.family, d => d.subfamily, d => d.genus);
     //console.log(nested);
     const root = d3.hierarchy(nested)
@@ -27,9 +28,7 @@ d3.json("../data/orchid.json")
     // const orchid = root.children[0];
     // console.log(orchid.x0, orchid.x1);
     // console.log(orchid.y0, orchid.y1);
-    // const epi = orchid.children[0];
-    // console.log(epi.data[0], epi.x1);
-
+ 
     const nodes = root.descendants().filter(d => d.depth > 0);
     const cell = svg.selectAll("g")
       .data(nodes)
