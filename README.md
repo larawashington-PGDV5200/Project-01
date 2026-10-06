@@ -5,6 +5,11 @@
 
   **Live:** https://larawashington-pgdv5200.github.io/Project-01/visualization/
 
+  **Visualization**
+  ![Orchid collection icicle chart](assets/title-chart.png)
+  **Legend**
+  ![Legend: subfamily colours, Other genera, bar height = number of species](assets/legend.png)
+
   ## Key finding
   The collection holds **48,786** specimens from **655** genera, and over half
   come from the 20 largest genera.
@@ -38,3 +43,7 @@
   - `visualization/`: the visualization
   - `data/`: the orchid dataset
   - `sketches/`: early concept sketches
+
+  ## Prototype
+  **V1 Visualization** 
+  ![V1 Visualization Prototype](assets/v1-chart.png)
