@@ -72,10 +72,3 @@ h1 {
   width: 160px;
   height: 60px;
 }
-
-/* TEMP OUTLINES */
-#lines {outline: 2px solid blue;}
-#overlay {outline: 2px solid red;}
-#inset {outline: 2px solid green;}
-#rank-labels {outline: 2px solid purple;}
-

@@ -1,5 +1,16 @@
-let width = window.innerWidth;
-let height = window.innerHeight;
+const box = document.querySelector("#viz");
+const cvs = document.querySelector("#lines");
+const pen = cvs.getContext("2d");
+let width = 1000; //will be resized 
+let height = 600; //will be resized 
+let root;
+
+let timer = 0;
+window.addEventListener("resize", function () {
+  clearTimeout(timer);
+  timer = setTimeout(resize, 150);
+});
+
 const colour = d3.scaleOrdinal(d3.schemeTableau10);
 
 d3.json("../data/orchid.json")
@@ -10,36 +21,33 @@ d3.json("../data/orchid.json")
     // console.log(cdata[0]);
     // console.log(cdata.filter(d => d.uncertain).length);
     // console.log(d3.rollup(cdata, v => v.length, d => d.rank));
-    //console.log(cdata[0]);
-    //console.log(cdata.filter(d => d.genus === "Unknown").length);
-    //console.log("subfamilies:", new Set(cdata.map(d => d.subfamily)).size, "genera:", new Set(cdata.map(d => d.genus)).size);
     const nested = d3.group(cdata, d => d.kingdom, d => d.taxclass, d => d.order, d => d.family, d => d.subfamily, d => d.genus, d => d.species);
-    const root = d3.hierarchy(nested)
-      .count();
-    console.log(root.value);
-    console.log(root.leaves().length);
-    console.log(root.height);
+    root = d3.hierarchy(nested)
+      .count()
+      .sort((a, b) => b.value - a.value);
+    d3.partition().size([1, 1])(root);
+    resize();
 
-  //     .attr("viewBox", [0, 0, width, height]);
-  //   const rowHeight = height / root.height;
-  //   d3.partition().size([width, height + rowHeight])(root);
-  //   // console.log(root.descendants().length);
-  //   // const orchid = root.children[0];
-  //   // console.log(orchid.x0, orchid.x1);
-  //   // console.log(orchid.y0, orchid.y1);
+    //     .attr("viewBox", [0, 0, width, height]);
+    //   const rowHeight = height / root.height;
+    //   d3.partition().size([width, height + rowHeight])(root);
+    //   // console.log(root.descendants().length);
+    //   // const orchid = root.children[0];
+    //   // console.log(orchid.x0, orchid.x1);
+    //   // console.log(orchid.y0, orchid.y1);
 
-  //   const nodes = root.descendants().filter(d => d.depth > 0);
-  //   const cell = svg.selectAll("g")
-  //     .data(nodes)
-  //     .join("g")
-  //     .attr("transform", d => `translate(${d.x0}, ${d.y0 - rowHeight})`);
-  //   cell.append("rect")
-  //     .attr("width", d => d.x1 - d.x0)
-  //     .attr("height", d => d.y1 - d.y0)
-  //     .attr("fill", d => fillColour(d))
-  //     .attr("stroke", "white");
-  //   cell.append("title")
-  //     .text(d => `${d.data[0]}: ${d.value} specimens`);
+    //   const nodes = root.descendants().filter(d => d.depth > 0);
+    //   const cell = svg.selectAll("g")
+    //     .data(nodes)
+    //     .join("g")
+    //     .attr("transform", d => `translate(${d.x0}, ${d.y0 - rowHeight})`);
+    //   cell.append("rect")
+    //     .attr("width", d => d.x1 - d.x0)
+    //     .attr("height", d => d.y1 - d.y0)
+    //     .attr("fill", d => fillColour(d))
+    //     .attr("stroke", "white");
+    //   cell.append("title")
+    //     .text(d => `${d.data[0]}: ${d.value} specimens`);
   });
 
 function cleanRecord(d) {
@@ -68,6 +76,32 @@ function cleanRecord(d) {
     uncertain,
     rank
   };
+}
+
+function resize() {
+  width = box.clientWidth;
+  height = box.clientHeight;
+  const dpr = window.devicePixelRatio || 1;
+  cvs.width = Math.round(width * dpr);
+  cvs.height = Math.round(height * dpr);
+
+  pen.setTransform(dpr, 0, 0, dpr, 0, 0);
+  drawLines();
+}
+
+function drawLines() {
+  pen.clearRect(0, 0, width, height);
+  if (!root) return;
+  pen.beginPath();
+  const rowHeight = height / 7;
+  //lookup obj of rank name to row number 
+  const rowOf = { family: 4, subfamily: 5, genus: 6, species: 7 };
+  for (const leaf of root.leaves()) {
+    pen.moveTo(leaf.x0 * width, 0);
+    pen.lineTo(leaf.x0 * width, rowOf[leaf.data.rank] * rowHeight) //go to row number x rowHeight - lookup. 
+  }
+  pen.strokeStyle = '#5b4a36';
+  pen.stroke();
 }
 
 // function fillColour(d) {
