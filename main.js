@@ -23,7 +23,7 @@ window.addEventListener("resize", function () {
   timer = setTimeout(resize, 150);
 });
 
-d3.json("../data/orchid.json")
+d3.json("data/orchid.json")
   .then(data => {
     //console.log(data.length);
     //console.log(data[0]);
