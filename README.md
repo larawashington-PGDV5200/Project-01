@@ -3,7 +3,7 @@
   A D3 visualization of the Smithsonian's orchid specimens, broken down by
   family, subfamily and genus.
 
-  **Live:** https://larawashington-pgdv5200.github.io/Project-01/visualization/
+  **Live:** https://larawashington-pgdv5200.github.io/Project-01/
 
   **Visualization**
   ![Orchid collection icicle chart](assets/title-chart.png)
