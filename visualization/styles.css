@@ -16,6 +16,23 @@
   --dimmed-opa: 0.15;
   --divider-thickness: 1px;
   --context-row-height: 14px;
+  --viz-height: calc(100vh - 240px);
+}
+
+.rank-label {
+  fill: var(--ink);
+  font-size: 14px;
+  font-style: italic ;
+}
+
+.taxon-label {
+  fill: var(--paper);
+  font-size: 14px;
+  pointer-events: none;
+}
+
+.is-italic {
+  font-style: italic;
 }
 
 * {
@@ -49,11 +66,12 @@ h1 {
 
 #rank-labels {
   width: 90px;
+  height: var(--viz-height);
 }
 
 #viz {
   flex: 1;
-  height: calc(100vh - 240px);
+  height: var(--viz-height);
   position: relative;
 }
 
