@@ -41,10 +41,6 @@
   font-style: italic;
 }
 
-.genus-label {
-  fill: var(--ink);
-}
-
 * {
   box-sizing: border-box;
   margin: 0;
