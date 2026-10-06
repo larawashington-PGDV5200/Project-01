@@ -40,9 +40,8 @@
 
   ## Structure
   - `setup/`: fetches the data from the API
-  - `visualization/`: the visualization
   - `data/`: the orchid dataset
-  - `sketches/`: early concept sketches
+  - `assets/`: screenshots of the visualization + early concept sketches
 
   ## Prototype
   **V1 Visualization** 
