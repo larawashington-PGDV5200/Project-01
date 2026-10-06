@@ -4,25 +4,31 @@
   --ink: #5b4a36;
   --pencil: #8f8b7a;
   --stem: #b3b585;
-  --node: #9a6a45;
   --sub-epidendroideae: #a4557a;
   --sub-orchidoideae: #6f5a8c;
   --sub-cypripedioideae: #c9a03a;
   --sub-vanilloideae: #4f5e25;
   --sub-apostasioideae: #9fae86;
   --sub-unknown: #8f8b7a;
-  --line-opa: 0.85;
-  --uncertain-opa: 0.4;
-  --dimmed-opa: 0.15;
-  --divider-thickness: 1px;
-  --context-row-height: 14px;
+  --other: #b9b29a;
   --viz-height: calc(100vh - 240px);
+  --label-col: 90px;
+}
+
+.tooltip {
+  position: fixed;
+  pointer-events: none;
+  opacity: 0;
+  background: var(--paper);
+  border: 1px solid var(--pencil);
+  padding: 6px 10px;
+  font-size: 14px;
 }
 
 .rank-label {
   fill: var(--ink);
   font-size: 14px;
-  font-style: italic ;
+  font-style: italic;
 }
 
 .taxon-label {
@@ -35,10 +41,33 @@
   font-style: italic;
 }
 
+.genus-label {
+  fill: var(--ink);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+.lineage {
+  display: grid;
+  grid-template-columns: var(--label-col) 1fr;
+  align-items: baseline;
+  margin-top: 16px;
+  line-height: 1.3;
+  font-size: large;
+  font-style: italic;
+  color: var(--pencil);
+  text-align: center;
+}
+
+.lineage .rank {
+  text-align: right;
+  padding-right: 10px;
+  font-size: 14px;
+  color: var(--ink);
 }
 
 body {
@@ -52,7 +81,7 @@ body {
 section {
   width: 95%;
   margin: 0 auto;
-  padding: 50px 12px;
+  padding: 24px 12px;
   border-top: 1px solid var(--paper-edge);
 }
 
@@ -65,7 +94,7 @@ h1 {
 }
 
 #rank-labels {
-  width: 90px;
+  width: var(--label-col);
   height: var(--viz-height);
 }
 
@@ -75,18 +104,45 @@ h1 {
   position: relative;
 }
 
-#lines, #overlay {
+#blocks,
+#overlay {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%; 
+  width: 100%;
   height: 100%;
 }
 
-#inset {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  width: 160px;
-  height: 60px;
+#overlay {
+  pointer-events: none;
+}
+
+.legend {
+  display: flex;
+  /* items side by side */
+  flex-wrap: wrap;
+  /* wrap onto a new line on narrow screens */
+  gap: 16px;
+  margin-top: 16px;
+  font-size: 14px;
+}
+
+.swatch {
+  display: inline-block;
+  /* <i> is inline by default and would ignore width/height */
+  width: 12px;
+  height: 12px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.finding {
+  font-size: ___;
+  margin: 8px 0;
+}
+
+.encoding {
+  font-size: 14px;
+  color: var(--pencil);
+  font-style: italic;
 }

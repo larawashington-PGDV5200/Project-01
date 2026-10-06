@@ -14,14 +14,35 @@
 <body>
   <section>
     <h1>Taxonomic Classification of Smithsonian's Orchid Collection</h1>
+    <p class="finding">
+      The collection holds <b>48,786</b> specimens from across <b>655</b> genera,
+      but over 50% come from the largest <b>20</b>.
+    </p>
+    <div class="lineage">
+      <span class="rank">Kingdom</span><span>Plantae</span>
+      <span></span><span>↓</span>
+      <span class="rank">Class</span><span>Monocotyledonae</span>
+      <span></span><span>↓</span>
+      <span class="rank">Order</span><span>Asparagales</span>
+      <span></span><span>↓</span>
+    </div>
     <div class="viz-row">
       <svg id="rank-labels"></svg>
       <div id="viz">
-        <canvas id="lines"></canvas>
+        <svg id="blocks"></svg>
         <svg id="overlay"></svg>
-        <svg id="inset"></svg>
       </div>
     </div>
+    <div class="legend">
+      <span><i class="swatch" style="background: var(--sub-epidendroideae)"></i>Epidendroideae</span>
+      <span><i class="swatch" style="background: var(--sub-orchidoideae)"></i>Orchidoideae</span>
+      <span><i class="swatch" style="background: var(--sub-cypripedioideae)"></i>Cypripedioideae</span>
+      <span><i class="swatch" style="background: var(--sub-vanilloideae)"></i>Vanilloideae</span>
+      <span><i class="swatch" style="background: var(--sub-apostasioideae)"></i>Apostasioideae</span>
+      <span><i class="swatch" style="background: var(--sub-unknown)"></i>Unknown</span>
+      <span><i class="swatch" style="background: var(--other)"></i>Other genera (fewer than 50 specimens)</span>
+    </div>
+    <p class="encoding">Width = number of specimens · Bar height = number of species</p>
     <!-- <svg class="svg-plot" id="icicle"></svg> -->
   </section>
   <div class="tooltip"></div>

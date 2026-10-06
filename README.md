@@ -1,29 +1,40 @@
 # Taxonomic Classification of Smithsonian's Orchid Collection
 
-  A D3 visualization of how the Smithsonian's orchid specimens are broken down by
-  taxonomy, from Kingdom down to Species.
+  A D3 visualization of the Smithsonian's orchid specimens, broken down by
+  family, subfamily and genus.
 
   **Live:** https://larawashington-pgdv5200.github.io/Project-01/visualization/
+
+  ## Key finding
+  The collection holds **48,786** specimens from **655** genera, and over half
+  come from the 20 largest genera.
 
   ## Data
   - Source: [Smithsonian Open Access API](https://api.si.edu/openaccess/api/v1.0/search)
   - Query: `taxonomicName:"Plantae Monocotyledonae Asparagales Orchidaceae"`
-  - Data file: `data/orchid.json`
+  - Saved data file: `data/orchid.json`
+
+  ## How to read
+  - **Rows:** Family → Subfamily → Genus (Kingdom, Class and Order are shown
+    above the chart as a single line of descent since they are the same for all orchid speciments)
+  - **Width:** number of specimens
+  - **Genus bar height:** number of species
+    - **Note** the bar heights of Family and Subfamily are hardcoded
+  - **Colour:** subfamily
+  - **Grey:** "Other" meaning grouped genera with fewer than 50 specimens
+  - **Hover:** shows specimen count, species count and the most common species
 
   ## Method
-  - Each record's taxonomic name is split into ranks: Kingdom → Class → Order →
-    Family → Subfamily → Genus → Species
+  - Each record's taxonomic name is split into ranks
   - Records with uncertain names (`cf.`, `aff.`, `sp.`, `Indet.`, hybrids) stop
-    at the last rank they can be confidently placed in
-  - Records are nested with `d3.group`, and ranks are laid out as rows with
-    `d3.partition`
+    at the last rank they contained data on
+  - Nested with `d3.group` and laid out with `d3.partition`
 
   ## Built with
-  - D3.js v7
-  - Canvas (lines) + SVG (labels, overlay)
+  D3.js v7 · SVG
 
   ## Structure
-  - `setup/` – script that fetches the data from the API
-  - `visualization/` – the visualization
-  - `data/` – the cleaned orchid dataset
-  - `sketches/` – early concept sketches
+  - `setup/`: fetches the data from the API
+  - `visualization/`: the visualization
+  - `data/`: the orchid dataset
+  - `sketches/`: early concept sketches
