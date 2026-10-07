@@ -33,7 +33,7 @@
 
 .taxon-label {
   fill: var(--paper);
-  font-size: 14px;
+  font-size: 16px;
   pointer-events: none;
 }
 
@@ -114,9 +114,7 @@ h1 {
 
 .legend {
   display: flex;
-  /* items side by side */
   flex-wrap: wrap;
-  /* wrap onto a new line on narrow screens */
   gap: 16px;
   margin-top: 16px;
   font-size: 14px;
@@ -124,7 +122,6 @@ h1 {
 
 .swatch {
   display: inline-block;
-  /* <i> is inline by default and would ignore width/height */
   width: 12px;
   height: 12px;
   margin-right: 6px;

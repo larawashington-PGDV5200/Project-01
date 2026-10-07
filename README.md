@@ -11,8 +11,7 @@
   ![Legend: subfamily colours, Other genera, bar height = number of species](assets/legend.png)
 
   ## Key finding
-  The collection holds **48,786** specimens from **655** genera, and over half
-  come from the 20 largest genera.
+  The orchid family is one of largest and most diverse plant families in the world. The collection holds **48,786** specimens from **655** genera, and the distribution is shown in this partition chart.
 
   ## Data
   - Source: [Smithsonian Open Access API](https://api.si.edu/openaccess/api/v1.0/search)
